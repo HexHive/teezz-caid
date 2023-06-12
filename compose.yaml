@@ -1,0 +1,13 @@
+services:
+  teezz-caid:
+    image: teezz-caid:latest
+    platform: linux
+    build:
+      context: .
+    privileged: true # needed for adb
+    volumes:
+      - ./src:/opt/caid
+      - ./docker/.android:/root/.android
+      - ./docker/docker-entrypoint.sh:/docker-entrypoint.sh
+      - /dev/bus/usb:/dev/bus/usb
+      - ./inout:/inout
